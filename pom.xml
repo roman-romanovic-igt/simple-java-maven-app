@@ -77,7 +77,7 @@
         <executions>
           <execution>
             <phase>
-              test
+              install
             </phase>
           <goals>
             <goal>
