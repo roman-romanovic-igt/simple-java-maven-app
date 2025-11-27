@@ -106,6 +106,15 @@ pipeline {
 				)
 			}
 		}
+
+		stage ('Checkmarx') {
+			agent { label 'checkmarx' }
+			steps {
+				checkmarxScan(
+					checkmarxAppName: 'IGT-test'
+				)
+			}
+		}
 		
 		stage ('Initial Checks') {
 			steps {
