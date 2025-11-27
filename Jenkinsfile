@@ -1,5 +1,4 @@
 #!groovy
-@Library('tools-shared-lib') _
 
 isMain = (env.BRANCH_NAME == "main") ? true : false
 isDevelop = (env.BRANCH_NAME == "develop") ? true : false
@@ -70,15 +69,6 @@ pipeline {
                 		bat "git submodule foreach --recursive git clean -ffxd"
 			}
         }
-
-		stage ('Checkmarx') {
-			agent { label 'checkmarx' }
-			steps {
-				checkmarxScan(
-					checkmarxAppName: 'IGT-test'
-				)
-			}
-		}
 
 		stage ('Checkmarx') {
 			agent { label 'checkmarx' }
